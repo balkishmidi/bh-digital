@@ -112,16 +112,10 @@ if (/^\d{8,15}$/.test(CONTACT.whatsapp)) {
   whatsapp.target = '_blank';
   whatsapp.rel = 'noopener noreferrer';
 }
+// Submit through the form's native HTTPS POST action, with provider CAPTCHA.
 document.querySelector('#contact-form').addEventListener('submit', event => {
-  event.preventDefault();
-  const status = document.querySelector('#form-status');
-  if (!CONTACT.email) {
-    status.textContent = 'Le formulaire sera disponible prochainement. L’adresse de contact de BH Digital doit encore être configurée.';
-    return;
+  if (window.location.protocol === 'file:') {
+    event.preventDefault();
+    document.querySelector('#form-status').textContent = 'Pour envoyer votre demande, ouvrez la version en ligne du site ou écrivez à bhdigital.contact@gmail.com.';
   }
-  const data = new FormData(event.currentTarget);
-  const subject = `Projet BH Digital : ${data.get('service')}`;
-  const body = `Bonjour BH Digital,\n\nJe m’appelle ${data.get('name')}.\nMon e-mail : ${data.get('email')}\nMon besoin : ${data.get('service')}\n\n${data.get('message')}\n\nÀ bientôt !`;
-  window.location.href = `mailto:${CONTACT.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-  status.textContent = 'Votre message est préparé dans votre application e-mail. Envoyez-le depuis celle-ci pour finaliser votre demande.';
 });

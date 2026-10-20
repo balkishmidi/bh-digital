@@ -1,4 +1,5 @@
 /* Expressive studio layer: lightweight CSS motion, no animation libraries. */
+.form-honeypot{display:none!important}
 .boutique-project .project-preview{aspect-ratio:3/2;height:auto!important;background:#b98e95}.boutique-project .project-preview>img{object-fit:contain;object-position:center}
 .cafe-project .project-preview{aspect-ratio:3/2;height:auto!important;background:#b8bc98}.cafe-project .project-preview>img{object-fit:contain;object-position:center}.cafe-project .preview-caption{background:#fffffff0}
 /* Keep the hero interface and value strip level while retaining vertical motion. */

@@ -1,5 +1,11 @@
 # BH Digital — Balkis Hmidi
 
+## Current contact setup — FormSubmit
+
+The form now posts directly to `https://formsubmit.co/bhdigital.contact@gmail.com` rather than opening an email application. This supersedes earlier mailto instructions below. The provider handles its anti-spam challenge and confirmation page; a hidden honeypot adds spam filtering. Visitor information passes through FormSubmit, which retains submissions according to its policies. The visible form notice reflects this.
+
+Deploy the updated files, submit a test on the hosted site, then open the activation email in `bhdigital.contact@gmail.com` and confirm the form. Check Spam if necessary. Submit another test after activation and verify inbox delivery. Delivery has not yet been verified. Local `file:` submissions are blocked with a helpful message; use the hosted website. No email password or API secret belongs in this project.
+
 ## Interactive studio experience
 
 `experience.css` adds the colorful visual layer: gradient headline, dark portfolio section, tinted service cards, animated accents, manifesto, and FAQ. Include this stylesheet when publishing. The objective selector recommends a service and prefills the contact dropdown. Native FAQ disclosures work without JavaScript. Animations respect reduced-motion preferences.
