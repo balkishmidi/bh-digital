@@ -2,6 +2,8 @@
 
 ## Current contact setup — FormSubmit
 
+Update: JavaScript now submits through the FormSubmit AJAX endpoint without redirecting. A small green confirmation appears below the button after provider acceptance; errors keep the entered fields. Native POST remains as the no-JavaScript fallback. Activation through the recipient inbox is still required, and actual inbox delivery must be tested on the deployed site.
+
 The form now posts directly to `https://formsubmit.co/bhdigital.contact@gmail.com` rather than opening an email application. This supersedes earlier mailto instructions below. The provider handles its anti-spam challenge and confirmation page; a hidden honeypot adds spam filtering. Visitor information passes through FormSubmit, which retains submissions according to its policies. The visible form notice reflects this.
 
 Deploy the updated files, submit a test on the hosted site, then open the activation email in `bhdigital.contact@gmail.com` and confirm the form. Check Spam if necessary. Submit another test after activation and verify inbox delivery. Delivery has not yet been verified. Local `file:` submissions are blocked with a helpful message; use the hosted website. No email password or API secret belongs in this project.

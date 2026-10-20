@@ -112,10 +112,54 @@ if (/^\d{8,15}$/.test(CONTACT.whatsapp)) {
   whatsapp.target = '_blank';
   whatsapp.rel = 'noopener noreferrer';
 }
-// Submit through the form's native HTTPS POST action, with provider CAPTCHA.
-document.querySelector('#contact-form').addEventListener('submit', event => {
+// Keep submission on-page; report success only after provider acceptance.
+document.querySelector('#contact-form').addEventListener('submit', async event => {
+  event.preventDefault();
+  const form = event.currentTarget;
+  const status = document.querySelector('#form-status');
+  const button = form.querySelector('button[type="submit"]');
+  if (button.disabled) return;
+  status.dataset.state = '';
   if (window.location.protocol === 'file:') {
-    event.preventDefault();
-    document.querySelector('#form-status').textContent = 'Pour envoyer votre demande, ouvrez la version en ligne du site ou écrivez à bhdigital.contact@gmail.com.';
+    status.dataset.state = 'error';
+    status.textContent = 'Ouvrez le site en ligne pour envoyer votre message.';
+    return;
+  }
+  if (!form.reportValidity()) return;
+  const data = new FormData(form);
+  if (data.get('_honey')) return;
+  const originalLabel = button.innerHTML;
+  button.disabled = true;
+  button.textContent = 'Envoi en cours…';
+  status.textContent = '';
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), 20000);
+  try {
+    const response = await fetch('https://formsubmit.co/ajax/bhdigital.contact@gmail.com', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+      body: JSON.stringify(Object.fromEntries(data)),
+      signal: controller.signal,
+    });
+    const result = await response.json();
+    if (!response.ok || !(result.success === true || result.success === 'true')) throw new Error('Submission rejected');
+    // Activation is a provider prerequisite; don't label an activation notice as sent.
+    if (/activat|confirm.*email|check.*email/i.test(result.message || '')) {
+      status.dataset.state = 'error';
+      status.textContent = 'Le formulaire est en cours d’activation. Écrivez à bhdigital.contact@gmail.com.';
+      return;
+    }
+    status.dataset.state = 'success';
+    status.textContent = 'Merci ! Votre message a bien été envoyé.';
+    form.reset();
+  } catch (error) {
+    status.dataset.state = 'error';
+    status.textContent = error.name === 'AbortError'
+      ? 'L’envoi n’a pas pu être confirmé. Réessayez plus tard ou écrivez à bhdigital.contact@gmail.com.'
+      : 'L’envoi a échoué. Réessayez ou écrivez à bhdigital.contact@gmail.com.';
+  } finally {
+    clearTimeout(timeout);
+    button.disabled = false;
+    button.innerHTML = originalLabel;
   }
 });

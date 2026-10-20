@@ -1,4 +1,5 @@
 /* Expressive studio layer: lightweight CSS motion, no animation libraries. */
+#form-status{font-size:12px;line-height:1.7;margin:10px 0 0}#form-status[data-state=success]{color:#177245}#form-status[data-state=error]{color:#a52c38}#contact-form button:disabled{opacity:.65;cursor:wait;transform:none}
 .form-honeypot{display:none!important}
 .boutique-project .project-preview{aspect-ratio:3/2;height:auto!important;background:#b98e95}.boutique-project .project-preview>img{object-fit:contain;object-position:center}
 .cafe-project .project-preview{aspect-ratio:3/2;height:auto!important;background:#b8bc98}.cafe-project .project-preview>img{object-fit:contain;object-position:center}.cafe-project .preview-caption{background:#fffffff0}
