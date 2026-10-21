@@ -1,4 +1,5 @@
 /* Expressive studio layer: lightweight CSS motion, no animation libraries. */
+.arrow-icon{display:inline-block;width:1em;height:1em;vertical-align:-.12em;flex-shrink:0;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}.button .arrow-icon{width:18px;height:18px}.contact h2>.arrow-icon{width:.85em;height:.85em;color:#2c64f4}.services-grid article:after{content:''!important;width:90px;height:90px;background:currentColor;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M7 17 17 7M7 7h10v10' fill='none' stroke='black' stroke-width='1.7'/%3E%3C/svg%3E") center/contain no-repeat}
 #form-status{font-size:12px;line-height:1.7;margin:10px 0 0}#form-status[data-state=success]{color:#177245}#form-status[data-state=error]{color:#a52c38}#contact-form button:disabled{opacity:.65;cursor:wait;transform:none}
 .form-honeypot{display:none!important}
 .boutique-project .project-preview{aspect-ratio:3/2;height:auto!important;background:#b98e95}.boutique-project .project-preview>img{object-fit:contain;object-position:center}
