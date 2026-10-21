@@ -1,4 +1,7 @@
 /* Expressive studio layer: lightweight CSS motion, no animation libraries. */
+.property-project .project-preview{aspect-ratio:3/2;height:auto!important;background:#a9bec3;cursor:default}.property-project .project-preview>img{object-fit:contain;object-position:center}
+.project-visit{display:grid;place-items:center;flex-shrink:0;width:36px;height:36px;border:1px solid #ffffff28;border-radius:50%;background:#ffffff08;color:white;font-size:22px;transition:background .2s,border-color .2s}.project-visit:hover{background:#2c64f4;border-color:#2c64f4}.pastry-project div.project-preview{cursor:default}
+.pastry-project .project-preview{aspect-ratio:3/2;height:auto!important;background:#062e22}.pastry-project .project-preview>img{object-fit:contain;object-position:center}
 /* Mobile hero background is full bleed and stays below the navigation. */
 @media(max-width:760px){
   body .header{background:#fff;isolation:isolate}
